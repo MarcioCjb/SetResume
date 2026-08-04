@@ -1,0 +1,426 @@
+body {
+    padding-top: var(--altura-nav);
+    margin: 0;
+}
+
+.conteudo {
+    padding: 52px 64px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 36px;
+}
+
+.saudacao h1 {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.saudacao h1 span {
+    color: var(--gold-light);
+}
+
+.saudacao p {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.acoes-cabecalho {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    padding: 11px 18px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-primario {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    color: var(--dark);
+}
+
+.btn-primario:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--gold-40);
+}
+
+.btn-secundario {
+    background: var(--gold-05);
+    border: 1px solid var(--gold-20);
+    color: var(--text-soft);
+}
+
+.btn-secundario:hover {
+    background: var(--gold-10);
+    color: var(--gold-light);
+    border-color: var(--gold-30);
+}
+
+.titulo-secao {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.titulo-secao i {
+    color: var(--gold);
+    font-size: 20px;
+}
+
+.grade-estatisticas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.cartao-stat {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    padding: 22px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.cartao-stat:hover {
+    border-color: var(--border);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+}
+
+.cartao-stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.icone-stat {
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 12px;
+}
+
+.valor-stat {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.label-stat {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.linha-destaques {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.cartao-destaque {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: var(--transition);
+}
+
+.cartao-destaque:hover {
+    border-color: var(--border);
+    background: var(--surface2);
+    transform: translateY(-2px);
+}
+
+.icone-destaque {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.destaque-ouro {
+    background: var(--gold-12);
+    color: var(--gold);
+}
+
+.destaque-azul {
+    background: rgba(59, 130, 246, 0.15);
+    color: #6699FF;
+}
+
+.destaque-vermelho {
+    background: rgba(255, 80, 80, 0.12);
+    color: #FF8080;
+}
+
+.info-destaque h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+}
+
+.info-destaque p {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.grade-curriculos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 18px;
+    margin-bottom: 40px;
+}
+
+.cartao-curriculo {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.cartao-curriculo:hover {
+    border-color: var(--border);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.miniatura-curriculo {
+    height: 130px;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 14px;
+    position: relative;
+}
+
+.miniatura-curriculo span {
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    max-width: 85%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.miniatura-favorito {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #fff;
+    font-size: 16px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.miniatura-favorito:hover {
+    transform: scale(1.2);
+}
+
+.info-curriculo {
+    padding: 14px;
+}
+
+.info-curriculo h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.info-curriculo p {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+}
+
+.acoes-curriculo {
+    display: flex;
+    gap: 7px;
+}
+
+.btn-icone {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 9px;
+    background: var(--dark);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-sm);
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 12px;
+    transition: var(--transition);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-icone:hover {
+    color: var(--gold-light);
+    border-color: var(--gold-30);
+    background: var(--gold-07);
+}
+
+.btn-icone-excluir:hover {
+    color: var(--red-light);
+    border-color: var(--red);
+    background: var(--red-07);
+}
+
+.estado-vazio {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    color: var(--text-dim);
+    gap: 16px;
+    text-align: center;
+}
+
+.estado-vazio i {
+    font-size: 48px;
+    color: var(--surface3);
+}
+
+.estado-vazio p {
+    font-size: 13px;
+}
+
+footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border2);
+    padding: 28px 40px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+footer span {
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+footer p {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+footer a {
+    color: var(--gold-light);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+footer a:hover {
+    color: var(--gold);
+}
+
+.theme-icon-dark,
+.theme-icon-light {
+    transition: var(--transition);
+}
+
+[data-theme="dark"] .theme-icon-light {
+    display: none;
+}
+
+[data-theme="light"] .theme-icon-dark {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .conteudo {
+        padding: 30px 20px;
+    }
+
+    .cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .acoes-cabecalho {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .grade-estatisticas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .linha-destaques {
+        grid-template-columns: 1fr;
+    }
+
+    .grade-curriculos {
+        grid-template-columns: 1fr;
+    }
+}

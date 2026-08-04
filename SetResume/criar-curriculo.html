@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Currículo</title>
+    <link rel="shortcut icon" href="assets/images/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/criar-curriculo.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <nav class="nav">
+        <a href="home.html" class="nav-logo">
+            <img src="/assets/images/Logo.png" alt="">
+            <span class="nav-logo-texto">Set<span>Resume</span></span>
+        </a>
+        <div class="nav-links">
+            <a class="nav-link" href="home.html"><i class="bi bi-house"></i><span>Início</span></a>
+            <a class="nav-link ativo" href="criar-curriculo.html"><i class="bi bi-plus-circle"></i><span>Criar
+                    Currículo</span></a>
+        </div>
+        <div class="nav-right">
+            <button class="nav-icon-btn" onclick="themeManager.toggleTheme()" title="Alternar tema">
+                <i class="bi bi-moon-stars theme-icon-dark"></i>
+                <i class="bi bi-sun theme-icon-light"></i>
+            </button>
+            <button class="perfil-btn" id="perfilBtn" aria-label="Menu do perfil">
+                <div class="avatar-wrap" id="navAvatar"></div>
+                <i class="bi bi-chevron-down btn-chevron"></i>
+                <div class="perfil-dropdown" id="perfilDropdown">
+                    <div class="dropdown-header">
+                        <div class="dh-avatar-wrap" id="dropdownAvatar"></div>
+                        <div class="dh-info">
+                            <span id="ddNome" class="dh-nome">Usuário</span>
+                        </div>
+                    </div>
+                    <a href="configuracoes.html" class="dropdown-item"><i class="bi bi-gear"></i>Configurações</a>
+                    <a href="suporte.html" class="dropdown-item"><i class="bi bi-headset"></i>Suporte</a>
+                    <div class="dropdown-sep"></div>
+                    <a id="logoutBtn" class="dropdown-item logout"><i class="bi bi-box-arrow-right"></i>Sair da
+                        conta</a>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <div class="editor-side">
+        <div class="progress-steps" id="progressSteps">
+            <div class="step active" data-step="1">
+                <div class="step-circle">1</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="2">
+                <div class="step-circle">2</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="3">
+                <div class="step-circle">3</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="4">
+                <div class="step-circle">4</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="5">
+                <div class="step-circle">5</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="6">
+                <div class="step-circle">6</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="7">
+                <div class="step-circle">7</div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <div class="step-content active" data-step="0">
+                <div class="step-header">
+                    <h2 class="step-title">Escolha seu Template</h2>
+                    <p class="step-subtitle">Selecione o modelo que melhor representa seu estilo profissional</p>
+                </div>
+
+                <div class="templates-grid">
+                    <div class="template-card selected" data-template="classic" onclick="selectTemplate('classic')">
+                        <div class="template-preview">
+                            <i class="bi bi-file-earmark-text" style="font-size: 48px; color: var(--text-muted);"></i>
+                        </div>
+                        <div class="template-name">Clássico</div>
+                        <p class="template-description">Design tradicional e profissional</p>
+                    </div>
+
+                    <div class="template-card" data-template="modern" onclick="selectTemplate('modern')">
+                        <div class="template-preview">
+                            <i class="bi bi-layout-sidebar" style="font-size: 48px; color: var(--text-muted);"></i>
+                        </div>
+                        <div class="template-name">Moderno</div>
+                        <p class="template-description">Layout com sidebar lateral</p>
+                    </div>
+
+                    <div class="template-card" data-template="minimal" onclick="selectTemplate('minimal')">
+                        <div class="template-preview">
+                            <i class="bi bi-file-earmark-minus" style="font-size: 48px; color: var(--text-muted);"></i>
+                        </div>
+                        <div class="template-name">Minimalista</div>
+                        <p class="template-description">Design clean e elegante</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="1">
+                <div class="step-header">
+                    <h2 class="step-title">Dados Pessoais</h2>
+                    <p class="step-subtitle">Vamos começar com suas informações básicas</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">Nome Completo</label>
+                    <input type="text" class="form-input" id="fullName" placeholder="João Silva">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Data de Nascimento</label>
+                    <input type="date" class="form-input" id="birthDate">
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label required">Telefone</label>
+                        <input type="tel" class="form-input" id="phone" placeholder="(11) 99999-9999">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required">E-mail</label>
+                        <input type="email" class="form-input" id="email" placeholder="joao@email.com">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">LinkedIn</label>
+                    <input type="url" class="form-input" id="linkedin" placeholder="linkedin.com/in/seu-perfil">
+                </div>
+            </div>
+
+            <div class="step-content" data-step="2">
+                <div class="step-header">
+                    <h2 class="step-title">Resumo Profissional</h2>
+                    <p class="step-subtitle">Descreva brevemente sua experiência e objetivos</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">Resumo</label>
+                    <textarea class="form-textarea" id="summary"
+                        placeholder="Profissional com X anos de experiência em..."></textarea>
+                    <button class="suggestion-btn" onclick="generateSummary()">
+                        <i class="bi bi-magic"></i> Gerar sugestão
+                    </button>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="3">
+                <div class="step-header">
+                    <h2 class="step-title">Experiência Profissional</h2>
+                    <p class="step-subtitle">Adicione suas experiências de trabalho</p>
+                </div>
+
+                <div class="list-container" id="experienceList">
+                </div>
+
+                <button class="add-item-btn" onclick="addExperience()">
+                    <i class="bi bi-plus-circle"></i> Adicionar Experiência
+                </button>
+            </div>
+
+            <div class="step-content" data-step="4">
+                <div class="step-header">
+                    <h2 class="step-title">Formação Acadêmica</h2>
+                    <p class="step-subtitle">Adicione sua formação educacional</p>
+                </div>
+
+                <div class="list-container" id="educationList">
+                </div>
+
+                <button class="add-item-btn" onclick="addEducation()">
+                    <i class="bi bi-plus-circle"></i> Adicionar Formação
+                </button>
+            </div>
+
+            <div class="step-content" data-step="5">
+                <div class="step-header">
+                    <h2 class="step-title">Idiomas</h2>
+                    <p class="step-subtitle">Quais idiomas você domina?</p>
+                </div>
+            
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Idioma</label>
+                        <select class="form-input" id="languageSelect">
+                            <option value="">Selecione um idioma</option>
+                            <option value="Português">Português</option>
+                            <option value="Inglês">Inglês</option>
+                            <option value="Espanhol">Espanhol</option>
+                            <option value="Francês">Francês</option>
+                            <option value="Alemão">Alemão</option>
+                            <option value="Italiano">Italiano</option>
+                            <option value="Japonês">Japonês</option>
+                            <option value="Chinês">Chinês</option>
+                            <option value="Russo">Russo</option>
+                            <option value="Árabe">Árabe</option>
+                        </select>
+                    </div>
+            
+                    <div class="form-group">
+                        <label class="form-label">Nível</label>
+                        <select class="form-input" id="levelSelect">
+                            <option value="">Selecione o nível</option>
+                            <option value="basic">Básico</option>
+                            <option value="intermediate">Intermediário</option>
+                            <option value="advanced">Avançado</option>
+                            <option value="fluent">Fluente</option>
+                            <option value="native">Nativo</option>
+                        </select>
+                    </div>
+                </div>
+            
+                <button class="add-item-btn" onclick="addLanguage()" style="margin-top: 10px;">
+                    <i class="bi bi-plus-circle"></i> Adicionar Idioma
+                </button>
+            
+                <div class="tags-container" id="languagesTags" style="margin-top: 20px;">
+                </div>
+            </div>
+
+            <div class="step-content" data-step="6">
+                <div class="step-header">
+                    <h2 class="step-title">Habilidades</h2>
+                    <p class="step-subtitle">Liste suas principais competências</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Adicionar Habilidade</label>
+                    <div class="tag-input-wrapper">
+                        <input type="text" class="form-input" id="skillInput"
+                            placeholder="Ex: JavaScript, Gestão de Projetos">
+                        <button onclick="addSkill()">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+                    <button class="suggestion-btn" onclick="suggestSkills()">
+                        <i class="bi bi-magic"></i> Sugerir habilidades
+                    </button>
+                </div>
+
+                <div class="tags-container" id="skillsTags">
+                </div>
+            </div>
+
+            <div class="step-content" data-step="7">
+                <div class="step-header">
+                    <h2 class="step-title">Revisão Final</h2>
+                    <p class="step-subtitle">Revise todas as informações antes de finalizar</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">Título do Currículo</label>
+                    <input type="text" class="form-input" id="resumeTitle" placeholder="Ex: Currículo - Desenvolvedor">
+                </div>
+
+                <div
+                    style="background: var(--surface); padding: 20px; border-radius: var(--radius); border: 1px solid var(--border2);">
+                    <h3 style="color: var(--text); margin-bottom: 15px;">✓ Resumo do seu currículo</h3>
+                    <ul style="color: var(--text-muted); line-height: 2;">
+                        <li><strong>Dados Pessoais:</strong> <span id="reviewPersonal">-</span></li>
+                        <li><strong>Resumo:</strong> <span id="reviewSummary">-</span></li>
+                        <li><strong>Experiências:</strong> <span id="reviewExperience">-</span></li>
+                        <li><strong>Formação:</strong> <span id="reviewEducation">-</span></li>
+                        <li><strong>Idiomas:</strong> <span id="reviewLanguages">-</span></li>
+                        <li><strong>Habilidades:</strong> <span id="reviewSkills">-</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="form-navigation">
+                <button class="btn-nav btn-prev" id="btnPrev" onclick="previousStep()" style="display: none;">
+                    <i class="bi bi-arrow-left"></i> Anterior
+                </button>
+                <button class="btn-nav btn-next" id="btnNext" onclick="nextStep()">
+                    Começar <i class="bi bi-arrow-right"></i>
+                </button>
+                <button class="btn-nav btn-finish" id="btnFinish" onclick="finishResume()" style="display: none;">
+                    <i class="bi bi-check-circle"></i> Finalizar Currículo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="preview-side">
+        <div class="preview-header">
+            <h3 class="preview-title">Preview do Currículo</h3>
+            <div class="preview-actions">
+                <button class="preview-action-btn" title="Baixar PDF" onclick="downloadPDF()">
+                    <i class="bi bi-download"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="resume-preview-container" id="resumePreview">
+            <div class="preview-placeholder">
+                <i class="bi bi-file-earmark-text"></i>
+                <p>Preencha os dados para ver o preview</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/curriculo.js"></script>
+    <script>
+        function loadUserNavbar() {
+            const session = localStorage.getItem('setresume_session');
+            if (!session) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const sessionData = JSON.parse(session);
+
+            document.getElementById('ddNome').textContent = sessionData.name;
+
+            const initials = sessionData.name
+                .split(' ')
+                .map(n => n[0])
+                .join('')
+                .substring(0, 2)
+                .toUpperCase();
+
+            document.getElementById('navAvatar').textContent = initials;
+            document.getElementById('dropdownAvatar').textContent = initials;
+
+            const users = JSON.parse(localStorage.getItem('setresume_users')) || [];
+            const user = users.find(u => u.id === sessionData.id);
+
+            if (user && user.profileImage) {
+                document.getElementById('navAvatar').innerHTML = `<img src="${user.profileImage}" alt="Perfil">`;
+                document.getElementById('dropdownAvatar').innerHTML = `<img src="${user.profileImage}" alt="Perfil">`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserNavbar();
+        });
+        var perfilBtn = document.getElementById("perfilBtn");
+        perfilBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            perfilBtn.classList.toggle("aberto");
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!perfilBtn.contains(e.target)) {
+                perfilBtn.classList.remove("aberto");
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (confirm('Tem certeza que deseja sair?')) {
+                localStorage.removeItem('setresume_session');
+                window.location.href = 'login.html';
+            }
+        });
+
+        function updateThemeDescription() {
+            const isDark = window.themeManager.getTheme() === 'dark';
+            const description = document.getElementById('themeDescription');
+            if (description) {
+                description.textContent = isDark ? 'Tema escuro ativado' : 'Tema claro ativado';
+            }
+        }
+
+        window.addEventListener('themeChanged', updateThemeDescription);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(updateThemeDescription, 100);
+        });
+    </script>
+</body>
+
+</html>

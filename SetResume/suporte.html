@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suporte</title>
+    <link rel="shortcut icon" href="/assets/images/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/suporte.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <nav class="nav">
+        <a href="home.html" class="nav-logo">
+            <img src="/assets/images/Logo.png" alt="">
+            <span class="nav-logo-texto">Set<span>Resume</span></span>
+        </a>
+        <div class="nav-links">
+            <a class="nav-link" href="home.html"><i class="bi bi-house"></i><span>Início</span></a>
+            <a class="nav-link" href="criar-curriculo.html"><i class="bi bi-plus-circle"></i><span>Criar
+                    Currículo</span></a>
+        </div>
+        <div class="nav-right">
+            <button class="nav-icon-btn" onclick="themeManager.toggleTheme()" title="Alternar tema">
+                <i class="bi bi-moon-stars theme-icon-dark"></i>
+                <i class="bi bi-sun theme-icon-light"></i>
+            </button>
+            <button class="perfil-btn" id="perfilBtn" aria-label="Menu do perfil">
+                <div class="avatar-wrap" id="navAvatar"></div>
+                <i class="bi bi-chevron-down btn-chevron"></i>
+                <div class="perfil-dropdown" id="perfilDropdown">
+                    <div class="dropdown-header">
+                        <div class="dh-avatar-wrap" id="dropdownAvatar"></div>
+                        <div class="dh-info">
+                            <span id="ddNome" class="dh-nome">Usuário</span>
+                        </div>
+                    </div>
+                    <a href="configuracoes.html" class="dropdown-item"><i class="bi bi-gear"></i>Configurações</a>
+                    <a href="suporte.html" class="dropdown-item"><i class="bi bi-headset"></i>Suporte</a>
+                    <div class="dropdown-sep"></div>
+                    <a id="logoutBtn" class="dropdown-item logout"><i class="bi bi-box-arrow-right"></i>Sair da
+                        conta</a>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <main class="support-container">
+        <div class="page-header">
+            <h1 class="page-title">Central de Suporte</h1>
+            <p class="page-subtitle">Estamos aqui para ajudar! Entre em contato conosco através de qualquer um dos
+                canais abaixo.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="bi bi-envelope"></i>
+                </div>
+                <h3>E-mail</h3>
+                <p>Envie sua dúvida ou problema para nossa equipe de suporte</p>
+                <a href="#" class="contact-link">
+                    AAAAAAA@AA.com <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="bi bi-chat-dots"></i>
+                </div>
+                <h3>Chat ao Vivo</h3>
+                <p>Converse em tempo real com nossa equipe de suporte</p>
+                <a href="#" class="contact-link">
+                    Iniciar chat <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="bi bi-telephone"></i>
+                </div>
+                <h3>Telefone</h3>
+                <p>Ligue para nossa central de atendimento</p>
+                <a href="#" class="contact-link">
+                    (99) 99999-9999 <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2 class="faq-title">Perguntas Frequentes</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h4>Como faço para criar meu primeiro currículo?</h4>
+                    <i class="bi bi-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Clique no botão "Novo Currículo" no topo da página ou vá em "Criar Currículo" no menu. Siga as 7
+                        etapas preenchendo suas informações e escolha um template ao final. Você verá uma prévia em
+                        tempo real!
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h4>Posso editar meu currículo depois de criado?</h4>
+                    <i class="bi bi-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Sim! Você pode editar seus currículos a qualquer momento. Na página inicial, clique no botão
+                        "Editar" no currículo desejado e faça as alterações necessárias.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h4>Como baixo meu currículo em PDF?</h4>
+                    <i class="bi bi-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Na página de criação/edição do currículo, clique no ícone de download no topo da área de
+                        preview. Você também pode baixar direto da página inicial clicando em "Baixar" no cartão do
+                        currículo.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h4>Quantos currículos posso criar?</h4>
+                    <i class="bi bi-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Não há limite! Você pode criar quantos currículos quiser, totalmente grátis. Crie versões
+                        diferentes para áreas distintas ou mantenha múltiplas versões atualizadas.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h4>Como altero o tema do site?</h4>
+                    <i class="bi bi-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Clique no ícone de lua/sol no canto superior direito da tela para alternar entre tema escuro e
+                        claro. Você também pode configurar nas Configurações de conta.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h4>Como excluo minha conta?</h4>
+                    <i class="bi bi-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Vá em Configurações > Role até a "Zona de Perigo" > Clique em "Deletar Conta Permanentemente".
+                        Atenção: esta ação é irreversível e todos os seus dados serão excluídos.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/theme.js"></script>
+    <script>
+        function loadUserNavbar() {
+            const session = localStorage.getItem('setresume_session');
+            if (!session) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const sessionData = JSON.parse(session);
+            document.getElementById('ddNome').textContent = sessionData.name;
+
+            const initials = sessionData.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+            document.getElementById('navAvatar').textContent = initials;
+            document.getElementById('dropdownAvatar').textContent = initials;
+
+            const users = JSON.parse(localStorage.getItem('setresume_users')) || [];
+            const user = users.find(u => u.id === sessionData.id);
+
+            if (user && user.profileImage) {
+                document.getElementById('navAvatar').innerHTML = `<img src="${user.profileImage}" alt="Perfil">`;
+                document.getElementById('dropdownAvatar').innerHTML = `<img src="${user.profileImage}" alt="Perfil">`;
+            }
+        }
+
+        var perfilBtn = document.getElementById("perfilBtn");
+        perfilBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            perfilBtn.classList.toggle("aberto");
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!perfilBtn.contains(e.target)) {
+                perfilBtn.classList.remove("aberto");
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (confirm('Tem certeza que deseja sair?')) {
+                localStorage.removeItem('setresume_session');
+                window.location.href = 'login.html';
+            }
+        });
+
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const allItems = document.querySelectorAll('.faq-item');
+
+            allItems.forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+
+            faqItem.classList.toggle('active');
+        }
+
+        document.getElementById('supportForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('supportName').value;
+            const email = document.getElementById('supportEmail').value;
+            const subject = document.getElementById('supportSubject').value;
+            const message = document.getElementById('supportMessage').value;
+
+            console.log('Mensagem de suporte:', { name, email, subject, message });
+            document.getElementById('successMessage').classList.add('show');
+            document.getElementById('supportForm').reset();
+
+            setTimeout(() => {
+                document.getElementById('successMessage').classList.remove('show');
+            }, 5000);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserNavbar();
+        });
+    </script>
+</body>
+
+</html>

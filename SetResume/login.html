@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="shortcut icon" href="/assets/images/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="glow-shape glow-1"></div>
+        <div class="glow-shape glow-2"></div>
+        <div class="glow-shape glow-3"></div>
+
+        <div class="login-container">
+            <div class="login-header">
+                <h1 class="logo-login">SetResume</h1>
+                <p class="login-subtitle">Crie currículos profissionais gratuitamente</p>
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                <i class="bi bi-exclamation-circle"></i>
+                <span id="errorText"></span>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                <i class="bi bi-check-circle"></i>
+                <span id="successText"></span>
+            </div>
+
+            <div class="form-tabs">
+                <button class="tab-btn active" data-tab="login">
+                    <i class="bi bi-box-arrow-in-right"></i> Entrar
+                </button>
+                <button class="tab-btn" data-tab="register">
+                    <i class="bi bi-person-plus"></i> Cadastrar
+                </button>
+            </div>
+
+            <div class="form-content active" id="login">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">E-mail</label>
+                        <div class="input-group">
+                            <i class="bi bi-envelope"></i>
+                            <input type="email" id="loginEmail" class="form-input" placeholder="seu@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">Senha</label>
+                        <div class="input-group">
+                            <i class="bi bi-lock"></i>
+                            <input type="password" id="loginPassword" class="form-input" placeholder="••••••••"
+                                required>
+                            <button type="button" class="password-toggle" data-target="loginPassword">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="rememberMe">
+                            <label for="rememberMe">Lembrar-me</label>
+                        </div>
+                        <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="bi bi-box-arrow-in-right"></i> Entrar
+                    </button>
+                </form>
+            </div>
+
+            <div class="form-content" id="register">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerName">Nome Completo</label>
+                        <div class="input-group">
+                            <i class="bi bi-person"></i>
+                            <input type="text" id="registerName" class="form-input" placeholder="João Silva" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerEmail">E-mail</label>
+                        <div class="input-group">
+                            <i class="bi bi-envelope"></i>
+                            <input type="email" id="registerEmail" class="form-input" placeholder="seu@email.com"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerPassword">Senha</label>
+                        <div class="input-group">
+                            <i class="bi bi-lock"></i>
+                            <input type="password" id="registerPassword" class="form-input"
+                                placeholder="Mínimo 6 caracteres" required minlength="6">
+                            <button type="button" class="password-toggle" data-target="registerPassword">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerConfirmPassword">Confirmar Senha</label>
+                        <div class="input-group">
+                            <i class="bi bi-lock-fill"></i>
+                            <input type="password" id="registerConfirmPassword" class="form-input"
+                                placeholder="Digite a senha novamente" required minlength="6">
+                            <button type="button" class="password-toggle" data-target="registerConfirmPassword">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="acceptTerms" required>
+                            <label for="acceptTerms">Aceito os termos de uso</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="bi bi-person-plus"></i> Criar Conta
+                    </button>
+                </form>
+            </div>
+
+            <div class="divider">
+                <span>ou</span>
+            </div>
+
+            <div class="back-home">
+                <a href="index.html">
+                    <i class="bi bi-arrow-left"></i> Voltar para página inicial
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações</title>
+    <link rel="shortcut icon" href="/assets/images/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/configuracoes.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <nav class="nav">
+        <a href="home.html" class="nav-logo">
+            <img src="/assets/images/Logo.png" alt="">
+            <span class="nav-logo-texto">Set<span>Resume</span></span>
+        </a>
+        <div class="nav-links">
+            <a class="nav-link" href="home.html"><i class="bi bi-house"></i><span>Início</span></a>
+            <a class="nav-link" href="criar-curriculo.html"><i class="bi bi-plus-circle"></i><span>Criar
+                    Currículo</span></a>
+        </div>
+        <div class="nav-right">
+            <button class="nav-icon-btn" onclick="themeManager.toggleTheme()" title="Alternar tema">
+                <i class="bi bi-moon-stars theme-icon-dark"></i>
+                <i class="bi bi-sun theme-icon-light"></i>
+            </button>
+            <button class="perfil-btn" id="perfilBtn" aria-label="Menu do perfil">
+                <div class="avatar-wrap" id="navAvatar"></div>
+                <i class="bi bi-chevron-down btn-chevron"></i>
+                <div class="perfil-dropdown" id="perfilDropdown">
+                    <div class="dropdown-header">
+                        <div class="dh-avatar-wrap" id="dropdownAvatar"></div>
+                        <div class="dh-info">
+                            <span id="ddNome" class="dh-nome">Usuário</span>
+                        </div>
+                    </div>
+                    <a href="configuracoes.html" class="dropdown-item"><i class="bi bi-gear"></i>Configurações</a>
+                    <a href="suporte.html" class="dropdown-item"><i class="bi bi-headset"></i>Suporte</a>
+                    <div class="dropdown-sep"></div>
+                    <a id="logoutBtn" class="dropdown-item logout"><i class="bi bi-box-arrow-right"></i>Sair da
+                        conta</a>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <main class="settings-container">
+        <div class="page-header">
+            <h1 class="page-title">Configurações</h1>
+            <p class="page-subtitle">Personalize sua conta e preferências</p>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <i class="bi bi-check-circle"></i>
+            <span>Configurações salvas com sucesso!</span>
+        </div>
+
+        <section class="settings-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="bi bi-person"></i>
+                </div>
+                <h2 class="section-title">Perfil</h2>
+            </div>
+
+            <div class="profile-picture-wrapper">
+                <div class="profile-picture-preview" id="profilePicturePreview">
+                    <span id="profileInitials">U</span>
+                </div>
+                <div class="profile-picture-actions">
+                    <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
+                    <button class="btn-upload" onclick="document.getElementById('profilePictureInput').click()">
+                        <i class="bi bi-upload"></i> Carregar Foto
+                    </button>
+                    <button class="btn-remove" onclick="removeProfilePicture()">
+                        <i class="bi bi-trash"></i> Remover Foto
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Nome Completo</label>
+                <input type="text" class="form-input" id="userName" placeholder="Seu nome completo">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Bio / Resumo</label>
+                <textarea class="form-textarea" id="userBio" placeholder="Conte um pouco sobre você..."></textarea>
+            </div>
+        </section>
+
+        <section class="settings-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="bi bi-link-45deg"></i>
+                </div>
+                <h2 class="section-title">Links Profissionais</h2>
+            </div>
+
+            <div class="links-list" id="linksList">
+            </div>
+
+            <button class="btn-add-link" onclick="addLink()">
+                <i class="bi bi-plus-circle"></i> Adicionar Link
+            </button>
+        </section>
+
+        <section class="settings-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="bi bi-shield-lock"></i>
+                </div>
+                <h2 class="section-title">Segurança</h2>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Senha Atual</label>
+                <input type="password" class="form-input" id="currentPassword" placeholder="Digite sua senha atual">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Nova Senha</label>
+                <input type="password" class="form-input" id="newPassword" placeholder="Digite a nova senha">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Confirmar Nova Senha</label>
+                <input type="password" class="form-input" id="confirmPassword" placeholder="Confirme a nova senha">
+            </div>
+
+            <button class="btn-save" onclick="changePassword()">
+                <i class="bi bi-key"></i> Alterar Senha
+            </button>
+        </section>
+
+        <section class="settings-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="bi bi-sliders"></i>
+                </div>
+                <h2 class="section-title">Preferências</h2>
+            </div>
+
+            <div class="toggle-group">
+                <div class="toggle-info">
+                    <div class="toggle-title">Tema Escuro</div>
+                    <div class="toggle-description" id="themeDescription">Tema escuro ativado</div>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="darkModeToggle" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+        <div class="action-buttons">
+            <button class="btn-cancel" onclick="cancelChanges()">
+                <i class="bi bi-x"></i> Cancelar
+            </button>
+            <button class="btn-save" onclick="saveSettings()">
+                <i class="bi bi-check-circle"></i> Salvar Alterações
+            </button>
+        </div>
+
+        <div class="danger-zone">
+            <div class="danger-zone-header">
+                <i class="bi bi-exclamation-triangle" style="color: var(--red-light); font-size: 24px;"></i>
+                <h3 class="danger-zone-title">Zona de Perigo</h3>
+            </div>
+            <p class="danger-zone-description">
+                Uma vez que você deletar sua conta, não há como voltar atrás. Todos os seus currículos e dados serão
+                permanentemente excluídos. Por favor, tenha certeza.
+            </p>
+            <button class="btn-delete-account" onclick="deleteAccount()">
+                <i class="bi bi-trash"></i> Deletar Conta Permanentemente
+            </button>
+        </div>
+    </main>
+
+    <script src="js/theme.js"></script>
+    <script src="js/config.js"></script>
+    <script>
+        function loadUserNavbar() {
+            const session = localStorage.getItem('setresume_session');
+            if (!session) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const sessionData = JSON.parse(session);
+
+            document.getElementById('ddNome').textContent = sessionData.name;
+
+            const initials = sessionData.name
+                .split(' ')
+                .map(n => n[0])
+                .join('')
+                .substring(0, 2)
+                .toUpperCase();
+
+            document.getElementById('navAvatar').textContent = initials;
+            document.getElementById('dropdownAvatar').textContent = initials;
+
+            const users = JSON.parse(localStorage.getItem('setresume_users')) || [];
+            const user = users.find(u => u.id === sessionData.id);
+
+            if (user && user.profileImage) {
+                document.getElementById('navAvatar').innerHTML = `<img src="${user.profileImage}" alt="Perfil">`;
+                document.getElementById('dropdownAvatar').innerHTML = `<img src="${user.profileImage}" alt="Perfil">`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserNavbar();
+        });
+        var perfilBtn = document.getElementById("perfilBtn");
+        perfilBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            perfilBtn.classList.toggle("aberto");
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!perfilBtn.contains(e.target)) {
+                perfilBtn.classList.remove("aberto");
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (confirm('Tem certeza que deseja sair?')) {
+                localStorage.removeItem('setresume_session');
+                window.location.href = 'login.html';
+            }
+        });
+
+        function updateThemeDescription() {
+            const isDark = window.themeManager.getTheme() === 'dark';
+            const description = document.getElementById('themeDescription');
+            if (description) {
+                description.textContent = isDark ? 'Tema escuro ativado' : 'Tema claro ativado';
+            }
+        }
+
+        window.addEventListener('themeChanged', updateThemeDescription);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(updateThemeDescription, 100);
+        });
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>

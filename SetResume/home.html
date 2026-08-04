@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="shortcut icon" href="/assets/images/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <nav class="nav">
+        <a href="home.html" class="nav-logo">
+            <img src="/assets/images/Logo.png" alt="">
+            <span class="nav-logo-texto">Set<span>Resume</span></span>
+        </a>
+        <div class="nav-links">
+            <a class="nav-link ativo" href="home.html"><i class="bi bi-house"></i><span>Início</span></a>
+            <a class="nav-link" href="criar-curriculo.html"><i class="bi bi-plus-circle"></i><span>Criar
+                    Currículo</span></a>
+        </div>
+        <div class="nav-right">
+            <button class="nav-icon-btn" onclick="themeManager.toggleTheme()" title="Alternar tema">
+                <i class="bi bi-moon-stars theme-icon-dark"></i>
+                <i class="bi bi-sun theme-icon-light"></i>
+            </button>
+            <button class="perfil-btn" id="perfilBtn" aria-label="Menu do perfil">
+                <div class="avatar-wrap" id="navAvatar"></div>
+                <i class="bi bi-chevron-down btn-chevron"></i>
+                <div class="perfil-dropdown" id="perfilDropdown">
+                    <div class="dropdown-header">
+                        <div class="dh-avatar-wrap" id="dropdownAvatar"></div>
+                        <div class="dh-info">
+                            <span id="ddNome" class="dh-nome">Usuário</span>
+                        </div>
+                    </div>
+                    <a href="configuracoes.html" class="dropdown-item"><i class="bi bi-gear"></i>Configurações</a>
+                    <a href="suporte.html" class="dropdown-item"><i class="bi bi-headset"></i>Suporte</a>
+                    <div class="dropdown-sep"></div>
+                    <a id="logoutBtn" class="dropdown-item logout"><i class="bi bi-box-arrow-right"></i>Sair da
+                        conta</a>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <main class="conteudo">
+        <div class="cabecalho">
+            <div class="saudacao">
+                <h1>Olá, <span id="saudacaoNome">Usuário</span>!</h1>
+                <p>Gerencie seus currículos e acompanhe seu desempenho</p>
+            </div>
+            <div class="acoes-cabecalho">
+                <a class="btn btn-primario" href="criar-curriculo.html">
+                    <i class="bi bi-plus-lg"></i> Criar Currículo
+                </a>
+            </div>
+        </div>
+
+        <div class="titulo-secao"><i class="bi bi-bar-chart-line"></i> Estatísticas</div>
+        <div class="grade-estatisticas">
+            <div class="cartao-stat">
+                <div class="icone-stat"><i class="bi bi-file-earmark-text"></i></div>
+                <div class="valor-stat" id="stat-total">0</div>
+                <div class="label-stat">Currículos criados</div>
+            </div>
+            <div class="cartao-stat">
+                <div class="icone-stat"><i class="bi bi-eye"></i></div>
+                <div class="valor-stat" id="stat-views">0</div>
+                <div class="label-stat">Visualizações totais</div>
+            </div>
+            <div class="cartao-stat">
+                <div class="icone-stat"><i class="bi bi-heart"></i></div>
+                <div class="valor-stat" id="stat-favoritos">0</div>
+                <div class="label-stat">Currículos favoritos</div>
+            </div>
+            <div class="cartao-stat">
+                <div class="icone-stat"><i class="bi bi-hand-thumbs-up"></i></div>
+                <div class="valor-stat" id="stat-likes">0</div>
+                <div class="label-stat">Curtidas recebidas</div>
+            </div>
+        </div>
+
+        <div class="titulo-secao"><i class="bi bi-star"></i> Destaques</div>
+        <div class="linha-destaques">
+            <div class="cartao-destaque">
+                <div class="icone-destaque destaque-ouro"><i class="bi bi-heart-fill"></i></div>
+                <div class="info-destaque">
+                    <h4>Mais curtido</h4>
+                    <p id="destaque-curtido">—</p>
+                </div>
+            </div>
+            <div class="cartao-destaque">
+                <div class="icone-destaque destaque-azul"><i class="bi bi-eye-fill"></i></div>
+                <div class="info-destaque">
+                    <h4>Mais visualizado</h4>
+                    <p id="destaque-visualizado">—</p>
+                </div>
+            </div>
+            <div class="cartao-destaque">
+                <div class="icone-destaque destaque-vermelho"><i class="bi bi-clock-history"></i></div>
+                <div class="info-destaque">
+                    <h4>Mais recente</h4>
+                    <p id="destaque-recente">—</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="titulo-secao"><i class="bi bi-collection"></i> Currículos Recentes</div>
+        <div class="grade-curriculos" id="grade-curriculos">
+            <div class="estado-vazio">
+                <i class="bi bi-file-earmark-text"></i>
+                <p>Nenhum currículo criado ainda</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <span>SetResume</span>
+        <p>
+            &copy; 2026 SetResume
+        </p>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/home.js"></script>
+    <script>
+        var perfilBtn = document.getElementById("perfilBtn");
+        perfilBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            perfilBtn.classList.toggle("aberto");
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!perfilBtn.contains(e.target)) {
+                perfilBtn.classList.remove("aberto");
+            }
+        });
+    </script>
+</body>
+
+</html>
